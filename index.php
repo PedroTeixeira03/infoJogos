@@ -1,18 +1,14 @@
 <?php
 session_start();
 if (!(isset($_SESSION['login']))) { // ##### utilizador não autenticado ###### 
-
+  echo "não login";
+}else{
+  echo '<a href="registar.php?l=0">logout</a>';
 }
-include ('header.php');
 ?>
-
-
-        <button class="button" id="form-open">Iniciar sessão</button>
-        
-        <?php   if (isset($_SESSION['login'])) { echo $_SESSION['loginMsg']; }  ?>
-
-      </nav>
-    </header>
+<html lang="pt">
+  <!-- <head> -->
+   <?php include('header.php'); ?>
 
     <!-- Home -->
     <section class="home">
@@ -20,18 +16,14 @@ include ('header.php');
         <i class="uil uil-times form_close"></i>
         <!-- Login From -->
         <div class="form login_form">
-          <form action="autenticar.php" method="post">
+          <form action="registar.php" method="post">
             <h2>Iniciar Sessão</h2>
             <div class="input_box">
-              <input type="text" placeholder="login" required />
+              <input type="email" placeholder="Email" name="usermail" required />
               <i class="uil uil-envelope-alt email"></i>
             </div>
             <div class="input_box">
-              <input type="email" placeholder="Email" required />
-              <i class="uil uil-envelope-alt email"></i>
-            </div>
-            <div class="input_box">
-              <input type="password" placeholder="Password" required />
+              <input type="password" placeholder="Password" name="pwd" required />
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
@@ -44,15 +36,15 @@ include ('header.php');
               <a href="#" class="forgot_pw">Esqueceu a sua password?</a>
             </div>
 
-            <button class="button">Entrar agora</button>
+            <button class="button" name= "login">Entrar agora</button>
 
-            <div class="login_signup">Não tem uma conta?<a href="registar.php" id="signup">Criar</a></div>
+            <div class="login_signup">Não tem uma conta?<a href="" id="signup">Criar</a></div>
           </form>
         </div>
 
         <!-- Signup From -->
         <div class="form signup_form">
-          <form action="registar.php"  method="POST">
+          <form action="registar.php" method="POST">
             <h2>Criar</h2>
             <div class="input_box">
               <input type="text" id="loginput" placeholder="login" name="user" required />
@@ -63,17 +55,17 @@ include ('header.php');
               <i class="uil uil-envelope-alt email"></i>
             </div>
             <div class="input_box">
-              <input type="password" id="pass1" placeholder="Password" mñame="pass1" required />
+              <input type="password" id="pass1" placeholder="Password" name="pass1" required />
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
             <div class="input_box">
-              <input type="password"  id="pass2" placeholder="Confirmar password" name="pass2"required />
+              <input type="password"  id="pass2" placeholder="Confirmar password" name="pass2" required />
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
 
-            <button class="button">Criar</button>
+            <button class="button" name="registar">Criar</button>
 
             <div class="login_signup">Já tem uma conta? <a href="#" id="loginlink">Entrar</a></div>
           </form>
