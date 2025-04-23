@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!(isset($_SESSION['login']))) { // ##### utilizador não autenticado ###### 
-  echo "não login";
+
 }else{
   echo '<a href="registar.php?l=0">logout</a>';
 }
