@@ -7,9 +7,8 @@ if (isset($_POST['registar'])){
   if(isset($_POST['user']) && isset($_POST['email']) && isset($_POST['pass1']) && isset($_POST['pass2'])) {
     if($_POST['pass1'] == $_POST['pass2']){
       $password1 =MD5($_POST["pass1"]);
-    $password2 =MD5($_POST["pass2"]);
       
-      $db->registo($_POST['user'],$_POST['email'],$password1,$password2);
+      $db->registo($_POST['user'],$_POST['email'],$password1);
     }
     else{
       echo("Password não coincide");
@@ -36,5 +35,7 @@ if (isset($_GET['l']) && $_GET['l']== 0){
   echo("logout");
   $db->logout();
 }
+
+
 
 ?>

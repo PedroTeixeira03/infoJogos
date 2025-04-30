@@ -56,9 +56,9 @@ class ligaDados{
 				session_start(); // Inicia a sessão
 				$_SESSION['login'] = true;
 				$_SESSION['loginMsg'] = "<p align='center' style='color: blue;'>Login com sucesso </p>  "; 
-				$_SESSION['nome']=$dados['login'];
+				$_SESSION['nome']=$utilizadorInfo['login'];
 			
-				if($dados['tipoUtilizador']==1)
+				if($utilizadorInfo['tipoUtilizador']==1)
 				{
 					$_SESSION['tipo']=1; // Utilizador tipo admin
 				} else {
@@ -117,6 +117,14 @@ class ligaDados{
 		session_unset();
 		session_destroy();
 		header("location: index.php");
+	}
+
+	function listar_produtos(){
+		$sql = "SELECT * FROM produtos";
+		
+		$stmt = $this->liga->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }
 ?>
