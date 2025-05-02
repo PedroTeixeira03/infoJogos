@@ -1,7 +1,10 @@
 <?php
-//session_start();
+session_start();
 if (!(isset($_SESSION['login']))) { // ##### utilizador não autenticado ###### 
-    $_SESSION["tipo"]=0;
+	$_SESSION['tipo']=0;
+}else{
+  echo '<a href="registar.php?l=0">logout</a>';
+  echo $_SESSION['tipo'];
 }
 
 include('header.php'); 
@@ -17,8 +20,15 @@ $dados = $db->listar_produtos();
 				<br>
 				<table width="800px"  align="center" border="1">
 					<tr>
-						<td align="center" colspan="4">
-							<h2 style="color:#FFF;" align="center"> Catálogo de jogos</h2>
+					<?php
+						if($_SESSION['tipo'] == 1 || $_SESSION['tipo'] == 0){
+							echo '<td align="center" colspan="6">';
+						}
+						else{
+							echo '<td align="center" colspan="4">';
+						}
+					?>	
+						<h2 style="color:#FFF;" align="center"> Catálogo de jogos</h2>
 						</td>
 					</tr>
 
@@ -35,6 +45,16 @@ $dados = $db->listar_produtos();
 						<td align='center'>
 							Imagem
 						</td>
+						<?php
+						if($_SESSION['tipo'] == 1  || $_SESSION['tipo'] == 0){
+							echo "<td align='center'>
+										Apagar
+										</td>
+										 <td align='center'>
+										Atualizar
+										</td>";
+						}
+						?>
 					</tr>
 					
 					<?php 
@@ -44,7 +64,12 @@ $dados = $db->listar_produtos();
 							echo "<tr><td align='center'>".$registo['marca']."</td>";
 							echo "<td align='center'>".$registo['modelo']."</td>";
 							echo "<td align='center'>".$registo['descricao']."</td>";
-							echo "<td align='center'><img src='".$registo['imagem']."' width='180px'></td></tr>";
+							echo "<td align='center'><img src='".$registo['imagem']."' width='180px'></td>";
+							if($_SESSION['tipo'] == 1){
+								echo "<td align='center'>".'<a href="registar.php?ap='.$registo['n_produto'].'">teste 1</a>'."</td>";
+								echo "<td align='center'>"."teste 2"."</td>";
+							}
+							echo "</tr>";
 						}
 					?>
 				</table>

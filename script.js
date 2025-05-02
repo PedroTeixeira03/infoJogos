@@ -3,7 +3,7 @@ const formOpenBtn = document.querySelector("#form-open"),
   formContainer = document.querySelector(".form_container"),
   formCloseBtn = document.querySelector(".form_close"),
   signupBtn = document.querySelector("#signup"),
-  loginBtn = document.querySelector("#login"),
+  loginBtn = document.querySelector("#loginlink"),
   pwShowHide = document.querySelectorAll(".pw_hide");
 
 formOpenBtn.addEventListener("click", () => home.classList.add("show"));
@@ -26,6 +26,7 @@ signupBtn.addEventListener("click", (e) => {
   e.preventDefault();
   formContainer.classList.add("active");
 });
+
 loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
   formContainer.classList.remove("active");

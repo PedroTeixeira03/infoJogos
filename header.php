@@ -33,7 +33,9 @@
       <!-- Home -->
     <section class="home">
       <div class="form_container">
-        <i class="uil uil-times form_close"></i>
+        <!-- <i class="uil uil-times form_close"></i> -->
+        <span class="form_close">×</span>
+
         <!-- Login From -->
         <div class="form login_form">
           <form action="registar.php" method="post">
@@ -83,7 +85,7 @@
 
             <button class="button" name="registar">Criar</button>
 
-            <div class="login_signup">Já tem uma conta? <a href="#" id="loginlink">Entrar</a></div>
+            <div class="login_signup">Já tem uma conta? <a href="" id="loginlink">Entrar</a></div>
           </form>
         </div>
       </div>

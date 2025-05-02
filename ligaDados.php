@@ -126,5 +126,16 @@ class ligaDados{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+	function apagar_produto($id){
+		
+		$stmt = $this->liga->prepare("DELETE FROM produtos WHERE n_produto = :produto");
+		$stmt->bindParam(':produto',$id);
+		$stmt->execute();
+		
+		$inf = $stmt->fetchAll();
+		
+		header("location: produtos.php");
+	}
 }
 ?>

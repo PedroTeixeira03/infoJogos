@@ -36,6 +36,34 @@ if (isset($_GET['l']) && $_GET['l']== 0){
   $db->logout();
 }
 
+//Apagar Produto
+if (isset($_GET['ap'])){
+  $db->apagar_produto($_GET['ap']);
+}
 
+//Inserir 
+if (isset($_POST['inserir'])) {
+  $marca = $_POST['marca'];
+  $modelo = $_POST['modelo'];
+  $n_plataforma = $_POST['n_plataforma'];
+  $preco = $_POST['preco'];
+  $descricao = $_POST['descricao'];
 
+  $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
+
+  $stmt = $conn->prepare("INSERT INTO produtos (marca, modelo, n_plataforma, preco, descricao, imagem) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param("sssdss", $marca, $modelo, $n_plataforma, $preco, $descricao, $null);
+
+  $null = NULL;
+  $stmt->send_long_data(5, $imagem);
+
+  if ($stmt->execute()) {
+    echo "Produto inserido com sucesso!";
+  } else {
+    echo "Erro ao inserir: " . $stmt->error;
+  }
+
+  $stmt->close();
+}
+$conn->close();
 ?>
