@@ -49,7 +49,7 @@ $dados = $db->listar_produtos();
 							Imagem
 						</td>
 						<?php
-						if($_SESSION['tipo'] == 1  || $_SESSION['tipo'] == 0){
+						if($_SESSION['tipo'] == 1){
 							echo "<td align='center'>
 										Apagar
 										</td>
