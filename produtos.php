@@ -22,10 +22,10 @@ $dados = $db->listar_produtos();
 					<tr>
 					<?php
 						if($_SESSION['tipo'] == 1 || $_SESSION['tipo'] == 0){
-							echo '<td align="center" colspan="6">';
+							echo '<td align="center" colspan="7">';
 						}
 						else{
-							echo '<td align="center" colspan="4">';
+							echo '<td align="center" colspan="5">';
 						}
 					?>	
 						<h2 style="color:#FFF;" align="center"> Catálogo de jogos</h2>
@@ -38,6 +38,9 @@ $dados = $db->listar_produtos();
 						</td>
 						<td align='center'>
 							Modelo
+						</td>
+						<td align='center'>
+							Preço
 						</td>
 						<td align='center'>
 							Descrição
@@ -63,6 +66,7 @@ $dados = $db->listar_produtos();
 						{
 							echo "<tr><td align='center'>".$registo['marca']."</td>";
 							echo "<td align='center'>".$registo['modelo']."</td>";
+							echo "<td align='center'>".$registo['preco']."</td>";
 							echo "<td align='center'>".$registo['descricao']."</td>";
 							echo "<td align='center'><img src='".$registo['imagem']."' width='180px'></td>";
 							if($_SESSION['tipo'] == 1){

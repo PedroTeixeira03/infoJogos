@@ -137,5 +137,22 @@ class ligaDados{
 		
 		header("location: produtos.php");
 	}
+
+	function inserir_produto($marca,$modelo,$n_plataforma,$preco,$descricao,$imagem){
+		$stmt = $this->liga->prepare("INSERT INTO produtos (marca, modelo, n_plataforma, preco, descricao, imagem) 
+		VALUES (?, ?, ?, ?, ?,?)");
+		
+		$stmt->bindValue(1,$marca);
+		$stmt->bindValue(2,$modelo);
+		$stmt->bindValue(3,$n_plataforma);
+		$stmt->bindValue(4,$preco);
+		$stmt->bindValue(5,$descricao);
+		$stmt->bindValue(6,$imagem);
+		
+		if ($stmt->execute()) {
+			echo "Produto inserido com sucesso!";
+			header("location: produtos.php");
+		} 
+	}
 }
 ?>

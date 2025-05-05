@@ -43,27 +43,41 @@ if (isset($_GET['ap'])){
 
 //Inserir 
 if (isset($_POST['inserir'])) {
+  
   $marca = $_POST['marca'];
   $modelo = $_POST['modelo'];
   $n_plataforma = $_POST['n_plataforma'];
   $preco = $_POST['preco'];
   $descricao = $_POST['descricao'];
 
-  $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
+  //extenções que serão permitidas para o upload dos ficheiros.
+  $permitidas = array("jpeg","jpg","png");
 
-  $stmt = $conn->prepare("INSERT INTO produtos (marca, modelo, n_plataforma, preco, descricao, imagem) VALUES (?, ?, ?, ?, ?, ?)");
-  $stmt->bind_param("sssdss", $marca, $modelo, $n_plataforma, $preco, $descricao, $null);
+  //variável que irá conter a imagem $_FILES[campo do caminho][tag name]
+  $temp = explode(".",$_FILES["imagem"]["name"]);
+  $extensao = end($temp);
 
-  $null = NULL;
-  $stmt->send_long_data(5, $imagem);
+  //Caminho para a pasta que passará a ter as imagens no servidor dentro da pasta htdocs
+  $target_path = "fotos/".time()."_".basename($_FILES['imagem']["name"]);
 
-  if ($stmt->execute()) {
-    echo "Produto inserido com sucesso!";
-  } else {
-    echo "Erro ao inserir: " . $stmt->error;
+  //if que garante que o ficheiro é de um formato de imagem válido e se tem tamanho inferior a 20mb
+  if((($_FILES["imagem"]["type"] == "image/jpeg") || ($_FILES["imagem"]["type"] == "image/jpg") || 
+  ($_FILES["imagem"]["type"] == "image/png") || ($_FILES["imagem"]["type"] == "image/x-png")) && 
+  ($_FILES["imagem"]["size"] < 20000000) && in_array($extensao, $permitidas)) 
+  {
+    if($_FILES["imagem"]["error"] > 0){
+      //Se houver erros no upload
+    }
+    else{
+      //função que permite o upload de ficheiro para o servidor
+      move_uploaded_file($_FILES["imagem"]["tmp_name"],$target_path);
+
+      $db->inserir_produto($marca,$modelo,$n_plataforma,$preco,$descricao, $target_path);
+    }
+  }else{
+    echo "ficheiro inválido";
   }
-
-  $stmt->close();
+  
 }
-$conn->close();
+
 ?>

@@ -2,7 +2,7 @@
   <div class="form_container">
     <i class="uil uil-times form_close"></i>
     <div class="form">
-      <form action="inserir.php" method="POST" enctype="multipart/form-data">
+      <form action="registar.php" method="POST" enctype="multipart/form-data">
         <h2>Inserir Produto</h2>
 
         <div class="input_box">
