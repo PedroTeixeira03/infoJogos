@@ -49,14 +49,7 @@
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
-
-            <div class="option_field">
-              <span class="checkbox">
-                <input type="checkbox" id="check" />
-                <label for="check">Lembrar-me</label>
-              </span>
-              <a href="#" class="forgot_pw">Esqueceu a sua password?</a>
-            </div>
+          
 
             <button class="button" name= "login">Entrar agora</button>
 
