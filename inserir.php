@@ -6,31 +6,10 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <title>Inserir</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-    }
 
-    main {
-      flex: 1;
-    }
-
-    .footer {
-      padding: 2px;
-      color: #fff;
-      text-align: center;
-      background-color: #fff;
-    }
-  </style>
 </head>
-
-<body>
   <?php include('header.php'); ?>
-
+<body>
   <main>
     <section class="home">
       <div class="bloco">
@@ -70,7 +49,7 @@ session_start();
       </div>
     </section>
   </main>
-
-  <?php include('footer.php'); ?>
+    <?php include('footer.php'); ?>
 </body>
+
 </html>
