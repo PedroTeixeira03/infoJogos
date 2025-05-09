@@ -3,7 +3,7 @@ session_start();
 if (!(isset($_SESSION['login']))) {
   // Utilizador não autenticado
 } else {
-  echo '<a href="registar.php?l=0">logout</a>';
+
 }
 ?>
 <html lang="pt">
@@ -39,7 +39,7 @@ if (!(isset($_SESSION['login']))) {
         <br><br><br><br>
         <p style="text-align:justify;">
           Um novo site para comprar a bom preço os jogos atuais e antigos!!!!
-          <br><br>
+          <br>
           Queres os melhores jogos para PC, PlayStation ou Xbox? No InfoJogos, encontras uma vasta seleção de títulos para todas as plataformas, desde os lançamentos mais aguardados até aos clássicos intemporais.
           Compra de forma fácil e segura e recebe os teus jogos rapidamente para começares a jogar sem esperas. Explora a nossa coleção e encontra o teu próximo grande jogo hoje mesmo!!!!
         </p>

@@ -261,11 +261,78 @@ section {
 
 /* Footer */
 .footer {
-  padding: 20px;
-  color: #ffffff;
+  width: 100%;
+  background-color: #ffffff; /* ou qualquer cor */
+  color: white;
   text-align: center;
-  margin-bottom: 1px;
+  padding: 10px 0;
+  margin-top: auto;
 }
 .footer h5{
   color: black
+}
+
+/*botao inserir */
+.button_inserir {
+  padding: 10px 22px;
+  border: 2px solid #0da8f0;
+  background: #0da8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: background 0.3s, color 0.3s;
+}
+
+.button_inserir:hover {
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+.button_inserir:active {
+  transform: scale(0.98);
+}
+
+.botao_centro {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.botao_centro {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/*botao inserir imagem*/
+.input_box input[type="file"] {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: white; /* texto "Nenhum ficheiro selecionado" */
+  background-color: transparent; /* para combinar com o fundo */
+}
+
+input[type=file]::file-selector-button {
+  padding: 10px 22px;
+  border: 2px solid #0da8f0;
+  background: #0da8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: background 0.3s, color 0.3s;
+  margin-left: 0;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+input[type=file]::file-selector-button:active {
+  transform: scale(0.98);
 }

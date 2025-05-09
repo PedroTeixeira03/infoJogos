@@ -31,8 +31,7 @@ if(isset($_POST['login'])){
 }
 
 //Efetuar o logout
-if (isset($_GET['l']) && $_GET['l']== 0){
-  echo("logout");
+if (isset($_POST['logout'])){
   $db->logout();
 }
 

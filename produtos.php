@@ -1,11 +1,5 @@
 <?php
 session_start();
-if (!(isset($_SESSION['login']))) {
-  $_SESSION['tipo'] = 0;
-} else {
-  echo '<a href="registar.php?l=0">logout</a>';
-  echo $_SESSION['tipo'];
-}
 
 include('header.php'); 
 include('ligaDados.php');
@@ -48,11 +42,13 @@ $dados = $db->listar_produtos();
         <table width="800px" align="center" border="1">
           <tr>
           <?php
+          if (isset($_SESSION['tipo'])) {
             if ($_SESSION['tipo'] == 1 || $_SESSION['tipo'] == 0) {
               echo '<td align="center" colspan="7">';
             } else {
               echo '<td align="center" colspan="5">';
             }
+          }
           ?>  
             <h2 style="color:#FFF;" align="center">Catálogo de jogos</h2>
             </td>
@@ -65,8 +61,10 @@ $dados = $db->listar_produtos();
             <td align='center'>Descrição</td>
             <td align='center'>Imagem</td>
             <?php
-            if ($_SESSION['tipo'] == 1) {
+            if (isset($_SESSION['tipo'])) {
+              if($_SESSION['tipo'] == 1) {
               echo "<td align='center'>Apagar</td><td align='center'>Atualizar</td>";
+              }
             }
             ?>
           </tr>

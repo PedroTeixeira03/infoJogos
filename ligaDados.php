@@ -75,7 +75,7 @@ class ligaDados{
 	}
 	
 	function login($email, $password1){
-		echo "pass: ".$password1;
+		
 		$sql = "SELECT * FROM utilizadores WHERE email = :email AND passe = :pass";
 		
 		$stmt = $this->liga->prepare($sql);
@@ -87,21 +87,20 @@ class ligaDados{
 
 		//verificar se houve login correto
 		$total = $stmt->rowCount();
-		echo "total de login ".$total;
+	
 		if($total > 0){
 			session_start();
 			foreach($inf as $dados){
 				$_SESSION['login'] = true;
 				$_SESSION['loginMsg'] = "<p align='center' style='color: blue;'>Login com sucesso </p>  "; 
 				$_SESSION['nome']=$dados['login'];
-		
+
 				if($dados['tipoUtilizador']==1)
 				{
 					$_SESSION['tipo']=1; // Utilizador tipo admin
 				} else {
 					$_SESSION['tipo']=2; // Utilizador tipo autenticado não administrador
 				}
-				
 		
 				header("location: index.php");
 			}

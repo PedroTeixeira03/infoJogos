@@ -1,8 +1,4 @@
-<?php
-  // header.php
-?>
-
-  <head>
+ <head>
     <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,13 +16,20 @@
             <li class="nav_item">
               <a href="index.php" class="nav_link active" >Home</a>
               <a href="produtos.php" class="nav_link">Produtos</a>
+              <?php if( isset($_SESSION['tipo']) && $_SESSION['tipo'] == 1){ 
+                echo ('<a href="inserir.php" class="nav_link">Inserir</a>'); 
+                } ?>
               <a href="contactos.php" class="nav_link">Contactos</a>
             </li>
           </ul>
-    
-          <button class="button" id="form-open">Iniciar sessão</button>
-          
-          <?php   if (isset($_SESSION['login'])) { echo $_SESSION['loginMsg']; }  ?>
+          <?php   
+          if (isset($_SESSION['login'])) { 
+                echo '<form action="registar.php" method="post" style="display:inline;">
+                <button class="button" type="submit" name="logout">Logout</button>
+                </form>';
+          }else{
+            echo '<button class="button" id="form-open">Iniciar sessão</button>';
+          }  ?>
     
         </nav>
       </header>

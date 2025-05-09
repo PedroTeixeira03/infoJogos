@@ -1,10 +1,6 @@
-<?php include('header.php'); ?>     
-
 <?php
-  if (isset($_SESSION['login'])) {
-    echo $_SESSION['loginMsg'];
-  }
-?>
+session_start();
+include('header.php'); ?>     
 
 </nav>
 </header>
@@ -13,7 +9,7 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Contato</title>
+  <title>Contacto</title>
   <style>
     html, body {
       height: 100%;
